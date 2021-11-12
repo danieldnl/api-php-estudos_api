@@ -17,7 +17,13 @@ function request()
         }
 
         if ($_GET['OPTION'] == 'random') {
-            define_response($data, rand(0,1000));
+            $min = 0;
+            $max = 1000;
+            $min = isset($_GET['min']) ? intval($_GET['min']) : $min; 
+            $max = isset($_GET['max']) ? intval($_GET['max']) : $max; 
+            if($min <= $max){
+                define_response($data, rand($min, $max));
+            }
         }
     }
 
